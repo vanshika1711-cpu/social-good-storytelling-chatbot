@@ -16,7 +16,8 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      content: "Hello! I'm here to help you create powerful impact stories for your community. Tell me about a need, challenge, or cause you'd like to raise awareness about.",
+      content:
+        "Hello! I'm here to help you create powerful impact stories for your community. Tell me about a need, challenge, or cause you'd like to raise awareness about.",
       sender: "ai",
       timestamp: new Date(),
     },
@@ -44,7 +45,7 @@ export default function Chat() {
       timestamp: new Date(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setInputMessage("");
     setIsLoading(true);
 
@@ -57,7 +58,7 @@ export default function Chat() {
         timestamp: new Date(),
       };
 
-      setMessages(prev => [...prev, aiResponse]);
+      setMessages((prev) => [...prev, aiResponse]);
 
       // Generate sample impact story
       const sampleStory = `# Community Impact Story: ${inputMessage}
@@ -114,7 +115,9 @@ Every voice matters. Every action counts. Join us in creating positive change in
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-social-blue-500 to-social-green-500 flex items-center justify-center">
                 <Bot className="h-5 w-5 text-white" />
               </div>
-              <h1 className="text-lg font-semibold text-gray-900">Impact Story Creator</h1>
+              <h1 className="text-lg font-semibold text-gray-900">
+                Impact Story Creator
+              </h1>
             </div>
           </div>
         </div>
@@ -125,8 +128,12 @@ Every voice matters. Every action counts. Join us in creating positive change in
           {/* Chat Interface */}
           <div className="flex flex-col bg-white rounded-xl shadow-lg border border-gray-200">
             <div className="p-4 border-b border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">Chat with AI</h2>
-              <p className="text-sm text-gray-600">Describe your community's needs and watch the magic happen</p>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Chat with AI
+              </h2>
+              <p className="text-sm text-gray-600">
+                Describe your community's needs and watch the magic happen
+              </p>
             </div>
 
             {/* Messages */}
@@ -152,7 +159,9 @@ Every voice matters. Every action counts. Join us in creating positive change in
                       )}
                       <div className="flex-1">
                         <p className="text-sm">{message.content}</p>
-                        <p className={`text-xs mt-1 ${message.sender === "user" ? "text-blue-100" : "text-gray-500"}`}>
+                        <p
+                          className={`text-xs mt-1 ${message.sender === "user" ? "text-blue-100" : "text-gray-500"}`}
+                        >
                           {message.timestamp.toLocaleTimeString()}
                         </p>
                       </div>
@@ -167,8 +176,14 @@ Every voice matters. Every action counts. Join us in creating positive change in
                       <Bot className="h-5 w-5 text-social-blue-600" />
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                        <div
+                          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.1s" }}
+                        ></div>
+                        <div
+                          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.2s" }}
+                        ></div>
                       </div>
                     </div>
                   </div>
@@ -203,8 +218,12 @@ Every voice matters. Every action counts. Join us in creating positive change in
           <div className="flex flex-col bg-white rounded-xl shadow-lg border border-gray-200">
             <div className="p-4 border-b border-gray-200 flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Impact Story Preview</h2>
-                <p className="text-sm text-gray-600">Your AI-generated story will appear here</p>
+                <h2 className="text-lg font-semibold text-gray-900">
+                  Impact Story Preview
+                </h2>
+                <p className="text-sm text-gray-600">
+                  Your AI-generated story will appear here
+                </p>
               </div>
               {impactStory && (
                 <div className="flex gap-2">
@@ -223,17 +242,40 @@ Every voice matters. Every action counts. Join us in creating positive change in
             <div className="flex-1 overflow-y-auto p-4">
               {impactStory ? (
                 <div className="prose prose-sm max-w-none">
-                  {impactStory.split('\n').map((line, index) => {
-                    if (line.startsWith('# ')) {
-                      return <h1 key={index} className="text-xl font-bold text-gray-900 mb-4">{line.substring(2)}</h1>;
-                    } else if (line.startsWith('## ')) {
-                      return <h2 key={index} className="text-lg font-semibold text-gray-800 mb-3 mt-6">{line.substring(3)}</h2>;
-                    } else if (line.startsWith('---')) {
-                      return <hr key={index} className="my-4 border-gray-300" />;
-                    } else if (line.trim() === '') {
+                  {impactStory.split("\n").map((line, index) => {
+                    if (line.startsWith("# ")) {
+                      return (
+                        <h1
+                          key={index}
+                          className="text-xl font-bold text-gray-900 mb-4"
+                        >
+                          {line.substring(2)}
+                        </h1>
+                      );
+                    } else if (line.startsWith("## ")) {
+                      return (
+                        <h2
+                          key={index}
+                          className="text-lg font-semibold text-gray-800 mb-3 mt-6"
+                        >
+                          {line.substring(3)}
+                        </h2>
+                      );
+                    } else if (line.startsWith("---")) {
+                      return (
+                        <hr key={index} className="my-4 border-gray-300" />
+                      );
+                    } else if (line.trim() === "") {
                       return <br key={index} />;
                     } else {
-                      return <p key={index} className="text-gray-600 mb-3 leading-relaxed">{line}</p>;
+                      return (
+                        <p
+                          key={index}
+                          className="text-gray-600 mb-3 leading-relaxed"
+                        >
+                          {line}
+                        </p>
+                      );
                     }
                   })}
                 </div>
@@ -243,8 +285,12 @@ Every voice matters. Every action counts. Join us in creating positive change in
                     <div className="h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Bot className="h-8 w-8 text-gray-400" />
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Ready to Create Impact</h3>
-                    <p className="text-gray-600">Start chatting to generate your compelling impact story</p>
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">
+                      Ready to Create Impact
+                    </h3>
+                    <p className="text-gray-600">
+                      Start chatting to generate your compelling impact story
+                    </p>
                   </div>
                 </div>
               )}
