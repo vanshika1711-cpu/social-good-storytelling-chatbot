@@ -15,7 +15,7 @@ It extracts **motivations, facts, and calls to action** from user inputs and out
 
 ---
 🛠️ Tools & Technologies
-- **Builder.io** – UI design  
+- **builder.io** – UI design  
 - **VS Code** – Development  
 - **Hugging Face Spaces / Gradio** – Chatbot interface  
 - **Gemini API / Hugging Face Transformers** – LLM model integration  
